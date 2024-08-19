@@ -185,26 +185,30 @@
   </footer>
 
 <script>
-        const esp32Ip = 'http://192.168.181.24/data'; // Substitua pelo IP real da sua ESP32
+<script>
+    const ESP32_IP = 'http://192.168.181.24'; // Endereço base do ESP32
 
-        async function fetchData() {
-            try {
-                const response = await fetch(esp32Ip);
-                const data = await response.json();
+    function fetchData() {
+      fetch(`${ESP32_IP}/data`)
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('soilMoisture').textContent = data.soilMoisture;
+          document.getElementById('mq9').textContent = data.mq9;
+          document.getElementById('ldr').textContent = data.ldr;
+          document.getElementById('mq135').textContent = data.mq135;
+          document.getElementById('humidity').textContent = data.humidity;
+          document.getElementById('pressure').textContent = data.pressure !== null ? data.pressure : 'Não disponível';
+        })
+        .catch(error => {
+          console.error('Erro ao buscar dados:', error);
+          document.getElementById('error').textContent = 'Erro ao buscar dados do servidor.';
+        });
+    }
 
-                document.getElementById('soilMoisture').textContent = data.soilMoisture;
-                document.getElementById('mq9').textContent = data.mq9;
-                document.getElementById('ldr').textContent = data.ldr;
-                document.getElementById('mq135').textContent = data.mq135;
-                document.getElementById('humidity').textContent = data.humidity;
-                document.getElementById('pressure').textContent = data.pressure;
-            } catch (error) {
-                console.error('Erro ao buscar dados:', error);
-            }
-        }
-
-        // Atualiza os dados a cada 5 segundos
-        setInterval(fetchData, 5000);
-    </script>
+    window.onload = function() {
+      fetchData();
+      setInterval(fetchData, 5000); // Atualiza os dados a cada 5 segundos
+    };
+  </script>
 </body>
 </html>
