@@ -120,7 +120,7 @@
     </div>
 
     <div class="content-section">
-<div class="info-section">
+      <div class="info-section">
         <h1>QUALIDADE DO AR</h1>
         <div>
           <h3>Umidade do Solo</h3>
@@ -155,60 +155,60 @@
         <div>
           <h3>Pressão</h3>
           <p><strong>Definição:</strong> A pressão atmosférica é a força exercida pela coluna de ar sobre uma superfície devido ao peso do ar acima dessa superfície. É um fator que influencia o clima e o tempo.</p>
-          <p><strong>Medição:</strong> Medida usando sensores barométricos, que detectam a pressão através da deformação de um diafragma ou por variação na capacitância.</p>
-          <p><strong>Aplicações:</strong> Previsão do tempo, monitoramento de altitude, e controle em sistemas de pressão industrial.</p>
+          <p><strong>Medição:</strong> Sensores de pressão, como o BMP180, medem a pressão atmosférica e podem fornecer dados sobre altitude e temperatura. A medição é feita por transdutores que detectam as variações na pressão do ar.</p>
+          <p><strong>Aplicações:</strong> Meteorologia, previsão do tempo, monitoramento de altitudes em sistemas de navegação, e controle de ambientes pressurizados.</p>
         </div>
       </div>
       <div class="biomas-section">
-        <h1>BIOMAS DO BRASIL</h1>
-        <p><strong>Bioma da Amazônia:</strong> A Amazônia é uma das maiores e mais biodiversas florestas tropicais do mundo, localizada na região da Bacia Amazônica. É crucial para o equilíbrio climático global e abriga uma infinidade de espécies vegetais e animais.</p>
-        <img src="https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2021/09/Amazonia.jpg?quality=100&strip=info&w=1024" alt="Bioma da Amazônia">
-        <p><strong>Bioma do Cerrado:</strong> O Cerrado é uma vasta savana tropical no Brasil, caracterizada por um clima sazonal com estação seca e chuvosa. É conhecido por sua rica biodiversidade e vegetação adaptada a condições áridas.</p>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsoJHHYn2ODrA87nla_3ZewRfOx3A8Fp34bOm8nYUFimGS3ue4l15DXCoCNn1oa8nPf9c&usqp=CAU" alt="Bioma do Cerrado">
-        <p><strong>Bioma da Caatinga:</strong> A Caatinga é uma região semiárida no nordeste do Brasil, caracterizada por vegetação xerófila adaptada à escassez de água. É um dos poucos biomas exclusivamente brasileiros.</p>
-        <img src="https://s1.static.brasilescola.uol.com.br/be/conteudo/images/bioma-caatinga.jpeg" alt="Bioma da Caatinga">
-        <p><strong>Bioma da Mata Atlântica:</strong> A Mata Atlântica é uma floresta tropical que se estende ao longo da costa atlântica do Brasil. É rica em biodiversidade e enfrenta desafios devido à urbanização e desmatamento.</p>
-        <img src="https://www.neoenergia.com/documents/d/guest/mata_atlantica_708x324" alt="Bioma da Mata Atlântica">
-        <p><strong>Bioma dos Pampas:</strong> Os Pampas são uma vasta região de pradarias no sul do Brasil, Argentina e Uruguai, caracterizada por um clima temperado e vegetação herbácea.</p>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRejd1fCNDvhsL4D38_Pqhe1Ih6WRcwTjaMKg&s" alt="Bioma dos Pampas">
-        <p><strong>Bioma dos Pantanais:</strong> Os Pantanais são uma região de planícies alagadas no centro-oeste do Brasil, conhecida por sua grande diversidade de flora e fauna aquática e terrestre.</p>
-        <img src="https://s2.static.brasilescola.uol.com.br/be/2020/06/areas-alagadas.jpg" alt="Bioma dos Pantanais">
+        <h1>BIOMAS</h1>
+        <div>
+          <h2>Bioma Amazônia</h2>
+          <img src="bioma_amazonia.jpg" alt="Bioma Amazônia">
+          <p>A Amazônia é a maior floresta tropical do mundo e possui uma biodiversidade incomparável, sendo essencial para a regulação climática global.</p>
+        </div>
+        <div>
+          <h2>Bioma Cerrado</h2>
+          <img src="bioma_cerrado.jpg" alt="Bioma Cerrado">
+          <p>O Cerrado é um bioma caracterizado por sua vegetação de savana, com uma grande diversidade de espécies adaptadas a períodos de seca.</p>
+        </div>
+        <div>
+          <h2>Bioma Caatinga</h2>
+          <img src="bioma_caatinga.jpg" alt="Bioma Caatinga">
+          <p>A Caatinga é um bioma exclusivo do Brasil, com vegetação xerófila adaptada a um clima semiárido.</p>
+        </div>
+        <div>
+          <h2>Bioma Pantanal</h2>
+          <img src="bioma_pantanal.jpg" alt="Bioma Pantanal">
+          <p>O Pantanal é a maior planície alagada do mundo, conhecido por sua rica fauna e flora e por sua importância para a biodiversidade.</p>
+        </div>
       </div>
     </div>
   </div>
 
   <footer>
-    <p>OUTRAS FONTES - QUALIDADE DO AR NO BRASIL</p>
-    <a href="https://iema.es.gov.br/qualidadedoar/indicedequalidadedoar" target="_blank">Índice de Qualidade do Ar - IEMA</a>
-    <a href="https://aqicn.org/map/brazil/pt/" target="_blank">Mapa da Qualidade do Ar - AQICN</a>
-    <a href="https://www.aqi.in/pt/dashboard/brazil" target="_blank">Dashboard de Qualidade do Ar - AQI</a>
+    <a href="#">Início</a>
+    <a href="#">Sobre</a>
+    <a href="#">Contato</a>
   </footer>
 
-<script>
-<script>
-    const ESP32_IP = 'http://192.168.181.24'; // Endereço base do ESP32
+  <script>
+    async function fetchData() {
+      try {
+        const response = await fetch('http://192.168.181.24/data'); // Altere para o endereço IP do seu ESP32
+        const data = await response.json();
 
-    function fetchData() {
-      fetch(`${ESP32_IP}/data`)
-        .then(response => response.json())
-        .then(data => {
-          document.getElementById('soilMoisture').textContent = data.soilMoisture;
-          document.getElementById('mq9').textContent = data.mq9;
-          document.getElementById('ldr').textContent = data.ldr;
-          document.getElementById('mq135').textContent = data.mq135;
-          document.getElementById('humidity').textContent = data.humidity;
-          document.getElementById('pressure').textContent = data.pressure !== null ? data.pressure : 'Não disponível';
-        })
-        .catch(error => {
-          console.error('Erro ao buscar dados:', error);
-          document.getElementById('error').textContent = 'Erro ao buscar dados do servidor.';
-        });
+        document.getElementById('soilMoistureValue').textContent = data.soilMoisture !== undefined ? data.soilMoisture : 'N/A';
+        document.getElementById('mq9Value').textContent = data.mq9 !== undefined ? data.mq9 : 'N/A';
+        document.getElementById('ldrValue').textContent = data.ldr !== undefined ? data.ldr : 'N/A';
+        document.getElementById('mq135Value').textContent = data.mq135 !== undefined ? data.mq135 : 'N/A';
+        document.getElementById('humidityValue').textContent = data.humidity !== undefined ? data.humidity : 'N/A';
+        document.getElementById('pressureValue').textContent = data.pressure !== undefined ? data.pressure : 'N/A';
+      } catch (error) {
+        console.error('Erro ao buscar os dados:', error);
+      }
     }
 
-    window.onload = function() {
-      fetchData();
-      setInterval(fetchData, 5000); // Atualiza os dados a cada 5 segundos
-    };
+    setInterval(fetchData, 10000); // Atualiza a cada 10 segundos
   </script>
 </body>
 </html>
