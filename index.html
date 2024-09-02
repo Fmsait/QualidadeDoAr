@@ -195,7 +195,7 @@
         }
         const data = await response.json();
 
-        document.getElementById('soilMoistureValue').textContent = data.soilMoisture !== undefined ? data.soilMoisture : 'N/A';
+        document.getElementById('soilMoistureValue').textContent = data.soilMoisturePercent !== undefined ? data.soilMoisturePercent : 'N/A';
         document.getElementById('mq9Value').textContent = data.coPPM !== undefined ? data.coPPM : 'N/A';
         document.getElementById('ldrValue').textContent = data.ldrLux !== undefined ? data.ldrLux : 'N/A';
         document.getElementById('mq135Value').textContent = data.airQualityPPM !== undefined ? data.airQualityPPM : 'N/A';
